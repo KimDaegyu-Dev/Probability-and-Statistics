@@ -1,0 +1,22 @@
+{
+  "name": "R Statistics Practice",
+
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "REditorSupport.r",
+        "RDebugger.r-debugger"
+      ],
+      "settings": {
+        "r.rterm.linux": "/usr/local/bin/R",
+        "r.alwaysUseActiveTerminal": true
+      }
+    }
+  },
+
+  "postCreateCommand": "R -e \"sessionInfo()\""
+}
