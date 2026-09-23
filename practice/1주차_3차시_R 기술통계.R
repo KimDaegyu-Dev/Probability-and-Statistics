@@ -1,9 +1,9 @@
-# ÀÛ¾÷ µð·ºÅä¸® º¯°æ(°¢ÀÚÀÇ È¯°æ¿¡ µû¶ó ´Ù¸£¹Ç·Î À¯ÀÇ)
-Data <- read.csv('1ÁÖÂ÷_3Â÷½Ã_R ±â¼úÅë°è.csv')
+# ìž‘ì—… ë””ë ‰í† ë¦¬ ë³€ê²½(ê°ìžì˜ í™˜ê²½ì— ë”°ë¼ ë‹¤ë¥´ë¯€ë¡œ ìœ ì˜)
+Data <- read.csv('1ì£¼ì°¨_3ì°¨ì‹œ_R ê¸°ìˆ í†µê³„.csv')
 Data
 str(Data)
 
-# Æò±Õ°ú ºÐ»ê ±¸ÇÏ±â
+# í‰ê· ê³¼ ë¶„ì‚° êµ¬í•˜ê¸°
 Mean_D <- mean(Data$RegionD)
 Var_D <- var(Data$RegionD)
 
@@ -20,7 +20,7 @@ Top = round(max(Data$RegionD), digits= 0)
 Top
 
 
-# µµ¼öºÐÆ÷Ç¥ ÀÛ¼º
+# ë„ìˆ˜ë¶„í¬í‘œ ìž‘ì„±
 table(Data$RegionD)    # ???????
 
 
@@ -30,23 +30,23 @@ Boundaries
 table(cut(Data$RegionD, Boundaries))
 
 
-# »ó´ëµµ¼öºÐÆ÷Ç¥ ÀÛ¼º
+# ìƒëŒ€ë„ìˆ˜ë¶„í¬í‘œ ìž‘ì„±
 Length <- length(Data$RegionD)
 Length
 
 table(cut(Data$RegionD, Boundaries)) / Length
 
 
-# È÷½ºÅä±×·¥ ÀÛ¼º
+# ížˆìŠ¤í† ê·¸ëž¨ ìž‘ì„±
 hist(Data$RegionD)
 
 hist(Data$RegionD, prob= TRUE)
 
 hist(Data$RegionA, breaks= Boundaries, prob= T, 
-     main= "»ó´ëµµ¼ö È÷½ºÅä±×·¥", ylab= "»ó´ëµµ¼ö", xlab= "DÁö¿ª")
+     main= "ìƒëŒ€ë„ìˆ˜ ížˆìŠ¤í† ê·¸ëž¨", ylab= "ìƒëŒ€ë„ìˆ˜", xlab= "Dì§€ì—­")
 
 
-# »óÀÚ±×¸² ÀÛ¼º
+# ìƒìžê·¸ë¦¼ ìž‘ì„±
 boxplot(Data$RegionD)
 
 boxplot(Data)

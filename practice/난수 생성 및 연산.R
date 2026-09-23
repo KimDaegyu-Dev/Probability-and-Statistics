@@ -1,12 +1,12 @@
 #===================================
-# Á¤±ÔºĞÆ÷·ÎºÎÅÍÀÇ ³­¼ö1
+# ì •ê·œë¶„í¬ë¡œë¶€í„°ì˜ ë‚œìˆ˜1
 mu1 = 5; sigma1 = 5;
 norm_1 = rnorm(1000, mu1, sigma1)
 mean(norm_1)
 var(norm_1)
 
 
-# Á¤±ÔºĞÆ÷·ÎºÎÅÍÀÇ ³­¼ö2
+# ì •ê·œë¶„í¬ë¡œë¶€í„°ì˜ ë‚œìˆ˜2
 mu2 = 5; sigma2 = 5;
 norm_2 = rnorm(1000, mu2, sigma2)
 mean(norm_2)
@@ -32,34 +32,34 @@ XdivY = norm_1 / norm_2
 mean(XdivY)
 var(XdivY)
 
-# Sum_square = norm_1 * norm_1 + norm_2 * norm_2#X^2+Y^2
-# mean(Sum_square)
-# var(Sum_square)
+Sum_square = norm_1 * norm_1 + norm_2 * norm_2#X^2+Y^2
+mean(Sum_square)
+var(Sum_square)
 
 
 
 
 par( mfrow=c(1,1) )
  
-hist(norm_1,freq = FALSE,breaks=20,col="gray",xlab="",main="Á¤±ÔºĞÆ÷ ³­¼öX")
+hist(norm_1,freq = FALSE,breaks=20,col="gray",xlab="",main="ì •ê·œë¶„í¬ ë‚œìˆ˜X")
 lines(density(norm_1),col="blue", lty=1, lwd =2)
 
-hist(norm_2,freq = FALSE,breaks=20,col="gray",xlab="",main="Á¤±ÔºĞÆ÷ ³­¼öY")
+hist(norm_2,freq = FALSE,breaks=20,col="gray",xlab="",main="ì •ê·œë¶„í¬ ë‚œìˆ˜Y")
 lines(density(norm_2),col="blue", lty=1, lwd =2)
 
-hist(Sum,freq = FALSE,breaks=20,col="gray",xlab="",main="Á¤±ÔºĞÆ÷ ÇÕ(X+Y)")
+hist(Sum,freq = FALSE,breaks=20,col="gray",xlab="",main="ì •ê·œë¶„í¬ í•©(X+Y)")
 lines(density(Sum),col="blue", lty=1, lwd =2)
 
-hist(Diff,freq = FALSE,breaks=20,col="gray",xlab="",main="Á¤±ÔºĞÆ÷ Â÷(X-Y)")
+hist(Diff,freq = FALSE,breaks=20,col="gray",xlab="",main="ì •ê·œë¶„í¬ ì°¨(X-Y)")
 lines(density(Diff),col="blue", lty=1, lwd =2)
 
-hist(Square,freq = FALSE,breaks=20,col="gray",xlab="",main="Á¤±ÔºĞÆ÷ Á¦°ö(X^2)")
+hist(Square,freq = FALSE,breaks=20,col="gray",xlab="",main="ì •ê·œë¶„í¬ ì œê³±(X^2)")
 lines(density(Square),col="blue", lty=1, lwd =2)
 
-hist(XmulY,freq = FALSE,breaks=20,col="gray",xlab="",main="Á¤±ÔºĞÆ÷ X*Y")
+hist(XmulY,freq = FALSE,breaks=20,col="gray",xlab="",main="ì •ê·œë¶„í¬ X*Y")
 lines(density(Sum_square),col="blue", lty=1, lwd =2)
 
-hist(XdivY,freq = FALSE,breaks=20,col="gray",xlab="",main="Á¤±ÔºĞÆ÷ X/Y")
+hist(XdivY,freq = FALSE,breaks=20,col="gray",xlab="",main="ì •ê·œë¶„í¬ X/Y")
 lines(density(Sum_square),col="blue", lty=1, lwd =2)
 
 
@@ -67,11 +67,11 @@ lines(density(Sum_square),col="blue", lty=1, lwd =2)
 
 ##==========================================
 
-Bi1 = rbinom(1000, 10, 0.5)#ÀÌÇ×ºĞÆ÷
+Bi1 = rbinom(1000, 10, 0.5)#ì´í•­ë¶„í¬
 mean(Bi1)
 var(Bi1)
 
-Bi2 = rbinom(1000, 100, 0.05)#ÀÌÇ×ºĞÆ÷
+Bi2 = rbinom(1000, 100, 0.05)#ì´í•­ë¶„í¬
 mean(Bi2)
 var(Bi2)
 
@@ -84,16 +84,16 @@ mean(Po)
 var(Po)
 
 par( mfrow=c(2,2) )
-hist(Bi1,freq = FALSE,col="gray",xlab="",main="ÀÌÇ×ºĞÆ÷(10, 0.5)")
+hist(Bi1,freq = FALSE,col="gray",xlab="",main="ì´í•­ë¶„í¬(10, 0.5)")
 lines(density(Bi1),col="blue", lty=1, lwd =3)
 
-hist(Bi2,freq = FALSE,breaks=10,col="gray",xlab="",main="ÀÌÇ×ºĞÆ÷(100, 0.05)")
+hist(Bi2,freq = FALSE,breaks=10,col="gray",xlab="",main="ì´í•­ë¶„í¬(100, 0.05)")
 lines(density(Bi2),col="blue", lty=1, lwd =3)
 
-hist(Bi3,freq = FALSE,breaks=20,col="gray",xlab="",main="ÀÌÇ×ºĞÆ÷(1000, 0.005)")
+hist(Bi3,freq = FALSE,breaks=20,col="gray",xlab="",main="ì´í•­ë¶„í¬(1000, 0.005)")
 lines(density(Bi3),col="blue",lty=1, lwd =3)
 
-hist(Po,freq = FALSE,breaks=10,col="gray",xlab="",main="Æ÷¾Æ¼Û ºĞÆ÷(5)")
+hist(Po,freq = FALSE,breaks=10,col="gray",xlab="",main="í¬ì•„ì†¡ ë¶„í¬(5)")
 lines(density(Po),col="blue", lty=1, lwd =3)
 
 
@@ -101,7 +101,7 @@ lines(density(Po),col="blue", lty=1, lwd =3)
 ###===============================================
 
 mu=0; sigma=1;  Df=1
-X =rnorm(1000,mu,sigma)#Á¤±ÔºĞÆ÷
+X =rnorm(1000,mu,sigma)#ì •ê·œë¶„í¬
 mean(X)
 var(X)
 
@@ -110,10 +110,10 @@ mean(Y)
 var(Y)
 
 par( mfrow=c(1,2) )
-hist(X*X,freq = FALSE,col="gray",breaks=20,xlab="",main="Á¤±ÔºĞÆ÷ÀÇ Á¦°ö(Y=X^2)")
+hist(X*X,freq = FALSE,col="gray",breaks=20,xlab="",main="ì •ê·œë¶„í¬ì˜ ì œê³±(Y=X^2)")
 lines(density(X*X),col="blue", lty=1, lwd =3)
 
-hist(Y,freq = FALSE,col="gray",breaks=20,xlab="",main="Chi-Square(ÀÚÀ¯µµ=1)")
+hist(Y,freq = FALSE,col="gray",breaks=20,xlab="",main="Chi-Square(ììœ ë„=1)")
 lines(density(Y),col="blue", lty=1, lwd =3)
 
 ####=======================================================================
@@ -137,29 +137,8 @@ var(F2)
 
 
 par( mfrow=c(1,1) )
-hist(F1,freq = FALSE,col="gray",breaks=20,xlab="",main="Chi-square ºĞÆ÷ÀÇ ºñ(F=(X/Df1)/(Y/Df2)")
+hist(F1,freq = FALSE,col="gray",breaks=20,xlab="",main="Chi-square ë¶„í¬ì˜ ë¹„(F=(X/Df1)/(Y/Df2)")
 lines(density(F1),col="blue", lty=1, lwd =3)
 
-hist(F2,freq = FALSE,col="gray",breaks=20,xlab="",main="FºĞÆ÷")
+hist(F2,freq = FALSE,col="gray",breaks=20,xlab="",main="Fë¶„í¬")
 lines(density(F2),col="blue", lty=1, lwd =3)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

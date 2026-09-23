@@ -1,14 +1,14 @@
-###Á¦2Àå. ÀÚ·áÀÇ Ç¥Çö
-##1. µµ¼öºĞÆ÷Ç¥ ÀÛ¼º 
-Data <- read.csv(file='data/2Àå_1. Áß·Â°¡¼Óµµ.csv', header = TRUE)
+###ì œ2ì¥. ìë£Œì˜ í‘œí˜„
+##1. ë„ìˆ˜ë¶„í¬í‘œ ì‘ì„± 
+Data <- read.csv(file='data/2ì¥_1. ì¤‘ë ¥ê°€ì†ë„.csv', header = TRUE)
 attach(Data)
 str(Data)
-min(Gravity); max(Gravity)  # ÃÖ´ñ/ÃÖ¼Ú°ª °è»ê
-range(Gravity)              # ÃÖ´ñ/ÃÖ¼Ú°ª °è»ê
-max(Gravity)-min(Gravity)   # Åë°è·® ¹üÀ§ °è»ê
-1 + log2(100)               # (7.643856) => °è±ŞÀÇ °³¼ö¸¦ 8·Î °áÁ¤ 
+min(Gravity); max(Gravity)  # ìµœëŒ“/ìµœì†Ÿê°’ ê³„ì‚°
+range(Gravity)              # ìµœëŒ“/ìµœì†Ÿê°’ ê³„ì‚°
+max(Gravity)-min(Gravity)   # í†µê³„ëŸ‰ ë²”ìœ„ ê³„ì‚°
+1 + log2(100)               # (7.643856) => ê³„ê¸‰ì˜ ê°œìˆ˜ë¥¼ 8ë¡œ ê²°ì • 
 
-# °è±Ş±¸°£À» ÀÓÀÇ·Î ÁöÁ¤
+# ê³„ê¸‰êµ¬ê°„ì„ ì„ì˜ë¡œ ì§€ì •
 Data <- transform(Gravity, 
            Class = ifelse(Gravity >= -400 & Gravity <= -200, "-400~-200",
                     ifelse(Gravity > -200 & Gravity <= -150, "-200~-150",
@@ -18,10 +18,10 @@ Data <- transform(Gravity,
                         ifelse(Gravity > 100 & Gravity <= 150, "100~150",
                          ifelse(Gravity > 150 & Gravity <= 200,
                                 "150~200", "200~600"))))))))
-table(Data$Class) # ¿øÇÏ´Â ¼ø¼­°¡ ¾Æ´Ô
+table(Data$Class) # ì›í•˜ëŠ” ìˆœì„œê°€ ì•„ë‹˜
 
-# ¿øÇÏ´Â ¼ø¼­·Î ÇÏ±â À§ÇÏ¿© 
-# º¯¼ö Class¸¦ ÀÎÀÚÇü(factor)À¸·Î ÇÏ°í, ¼öÁØ(level)À» ¿øÇÏ´Â ¼ø¼­·Î ÁöÁ¤
+# ì›í•˜ëŠ” ìˆœì„œë¡œ í•˜ê¸° ìœ„í•˜ì—¬ 
+# ë³€ìˆ˜ Classë¥¼ ì¸ìí˜•(factor)ìœ¼ë¡œ í•˜ê³ , ìˆ˜ì¤€(level)ì„ ì›í•˜ëŠ” ìˆœì„œë¡œ ì§€ì •
 Data$Class <- factor(Data$Class, 
                        levels=c("-400~-200", "-200~-150",
                                 "-150~-100", "-100~0",
@@ -32,84 +32,84 @@ detach(Data)
 
 
 
-##2. È÷½ºÅä±×·¥
-Data <- read.csv(file='data/2Àå_1. Áß·Â°¡¼Óµµ.csv', header = TRUE)
+##2. íˆìŠ¤í† ê·¸ë¨
+Data <- read.csv(file='data/2ì¥_1. ì¤‘ë ¥ê°€ì†ë„.csv', header = TRUE)
 attach(Data)
-#±âº»Çü
+#ê¸°ë³¸í˜•
 hist(Gravity)
 
-# °è±Ş±¸°£À» ¿øÇÏ´Â´ë·Î Ç¥ÇöÇÏ±â
+# ê³„ê¸‰êµ¬ê°„ì„ ì›í•˜ëŠ”ëŒ€ë¡œ í‘œí˜„í•˜ê¸°
 Break.Val= c(-400, -200, -150, -100, 0, 100, 150, 200, 600)
 Range.Val = c(-400, -200, -150, -100, 0, 100, 150, 200, 600)
 hist(Gravity, freq= FALSE, breaks= Break.Val, xlim= range(Range.Val),
-     xlab= "Áß·Â ÃøÁ¤ Â÷ÀÌ", ylab= "¹Ğµµ(Density)",
+     xlab= "ì¤‘ë ¥ ì¸¡ì • ì°¨ì´", ylab= "ë°€ë„(Density)",
      col= "gray", label= FALSE, main= NULL) 
 detach(Data)
 
 
 
-##3. ÁÙ±â-ÀÙ ±×¸²
-Data <- read.csv(file='data/2Àå_2. ÁÙ±âÀÙ±×¸².csv', header = TRUE)
+##3. ì¤„ê¸°-ì ê·¸ë¦¼
+Data <- read.csv(file='data/2ì¥_2. ì¤„ê¸°ìê·¸ë¦¼.csv', header = TRUE)
 attach(Data)
-# ±âº»Çü
+# ê¸°ë³¸í˜•
 stem(Height)
-# ÁÙ±â Á¶Àı
+# ì¤„ê¸° ì¡°ì ˆ
 stem(Height, scale=0.5)
 detach(Data)
 
 
 
-##4. »óÀÚ ±×¸²
-Data <- read.csv(file='data/2Àå_3. »óÀÚ±×¸².csv', header = TRUE)
+##4. ìƒì ê·¸ë¦¼
+Data <- read.csv(file='data/2ì¥_3. ìƒìê·¸ë¦¼.csv', header = TRUE)
 attach(Data)
 boxplot(Height ~ Gender)
 detach(Data)
 
 
 
-##5. ´Ùº¯·®ÀÚ·á 
-Data <- read.csv("data/2Àå_4. ´Ùº¯·®ÀÚ·á.csv", header=T)
+##5. ë‹¤ë³€ëŸ‰ìë£Œ 
+Data <- read.csv("data/2ì¥_4. ë‹¤ë³€ëŸ‰ìë£Œ.csv", header=T)
 attach(Data)
 
-#È÷½ºÅä±×·¥
+#íˆìŠ¤í† ê·¸ë¨
 par(mfrow=c(2,2))
 Break.Val=c(2.0, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5)
-hist(Data$°í±³¼ºÀû, breaks= Break.Val, xlab="", freq=T, ylab="µµ¼ö(Frequency)",
-     col="grey", label=FALSE, main="°í±³¼ºÀû")
-hist(Data$¼ö´É¾ğ¾î¼ºÀû, xlab="", freq=T, ylab="µµ¼ö(Frequency)",
-     col="grey", label=FALSE, main="¼ö´É¾ğ¾î¼ºÀû") 
-hist(Data$¼ö´É¿µ¾î¼ºÀû, xlab="", freq=T, ylab="µµ¼ö(Frequency)",
-     col="grey", label=FALSE, main="¼ö´É¿µ¾î¼ºÀû") 
-hist(Data$´ëÇĞ¼ºÀû, xlab="", freq=T, ylab="µµ¼ö(Frequency)",
-     col="grey", label=FALSE, main="´ëÇĞ¼ºÀû") 
+hist(Data$ê³ êµì„±ì , breaks= Break.Val, xlab="", freq=T, ylab="ë„ìˆ˜(Frequency)",
+     col="grey", label=FALSE, main="ê³ êµì„±ì ")
+hist(Data$ìˆ˜ëŠ¥ì–¸ì–´ì„±ì , xlab="", freq=T, ylab="ë„ìˆ˜(Frequency)",
+     col="grey", label=FALSE, main="ìˆ˜ëŠ¥ì–¸ì–´ì„±ì ") 
+hist(Data$ìˆ˜ëŠ¥ì˜ì–´ì„±ì , xlab="", freq=T, ylab="ë„ìˆ˜(Frequency)",
+     col="grey", label=FALSE, main="ìˆ˜ëŠ¥ì˜ì–´ì„±ì ") 
+hist(Data$ëŒ€í•™ì„±ì , xlab="", freq=T, ylab="ë„ìˆ˜(Frequency)",
+     col="grey", label=FALSE, main="ëŒ€í•™ì„±ì ") 
 
-# »êÁ¡µµ
+# ì‚°ì ë„
 par(mfrow=c(3,2))
-plot(¼ö´É¾ğ¾î¼ºÀû ~ °í±³¼ºÀû)    	# cor 0.056
-plot(¼ö´É¿µ¾î¼ºÀû ~ °í±³¼ºÀû)    	# cor 0.032
-plot(´ëÇĞ¼ºÀû ~ °í±³¼ºÀû)	      	# cor 0.703
-plot(¼ö´É¿µ¾î¼ºÀû ~ ¼ö´É¾ğ¾î¼ºÀû )      # cor -0.328
-plot(´ëÇĞ¼ºÀû ~ ¼ö´É¾ğ¾î¼ºÀû )		# cor -0.107
-plot(´ëÇĞ¼ºÀû ~ ¼ö´É¿µ¾î¼ºÀû )		# cor 0.133
+plot(ìˆ˜ëŠ¥ì–¸ì–´ì„±ì  ~ ê³ êµì„±ì )    	# cor 0.056
+plot(ìˆ˜ëŠ¥ì˜ì–´ì„±ì  ~ ê³ êµì„±ì )    	# cor 0.032
+plot(ëŒ€í•™ì„±ì  ~ ê³ êµì„±ì )	      	# cor 0.703
+plot(ìˆ˜ëŠ¥ì˜ì–´ì„±ì  ~ ìˆ˜ëŠ¥ì–¸ì–´ì„±ì  )      # cor -0.328
+plot(ëŒ€í•™ì„±ì  ~ ìˆ˜ëŠ¥ì–¸ì–´ì„±ì  )		# cor -0.107
+plot(ëŒ€í•™ì„±ì  ~ ìˆ˜ëŠ¥ì˜ì–´ì„±ì  )		# cor 0.133
 detach(Data)
 
 
 
 
-###Á¦4Àå. È®·üº¯¼ö ¹× È®·üºĞÆ÷
-## 4.8 ÀÌ»êºĞÆ÷ÀÇ ¿¹
-##4.8.1. ÀÌÇ×ºĞÆ÷
+###ì œ4ì¥. í™•ë¥ ë³€ìˆ˜ ë° í™•ë¥ ë¶„í¬
+## 4.8 ì´ì‚°ë¶„í¬ì˜ ì˜ˆ
+##4.8.1. ì´í•­ë¶„í¬
 
-#[¿¹Á¦ 4.14]
-#È®·üÁú·®ÇÔ¼ö
-# ¹İ¿Ã¸²ÇÔ¼ö round »ç¿ë, ¼Ò¼öÁ¡ ¼ÂÂ°ÀÚ¸®
+#[ì˜ˆì œ 4.14]
+#í™•ë¥ ì§ˆëŸ‰í•¨ìˆ˜
+# ë°˜ì˜¬ë¦¼í•¨ìˆ˜ round ì‚¬ìš©, ì†Œìˆ˜ì  ì…‹ì§¸ìë¦¬
 round(dbinom(0,4,1/6),3)
 round(dbinom(1,4,1/6),3)
 round(dbinom(2,4,1/6),3)
 round(dbinom(3,4,1/6),3)
 round(dbinom(4,4,1/6),3)
 
-#´©ÀûºĞÆ÷
+#ëˆ„ì ë¶„í¬
 round(pbinom(0,4,1/6),3)
 round(pbinom(1,4,1/6),3)
 round(pbinom(2,4,1/6),3)
@@ -118,64 +118,64 @@ round(pbinom(4,4,1/6),3)
 
 
 
-##4.8.2. ÃÊ±âÇÏºĞÆ÷
-#[¿¹Á¦] 4.15]
-#È®·üÁú·®ÇÔ¼ö¿Í ´©ÀûºĞÆ÷
+##4.8.2. ì´ˆê¸°í•˜ë¶„í¬
+#[ì˜ˆì œ] 4.15]
+#í™•ë¥ ì§ˆëŸ‰í•¨ìˆ˜ì™€ ëˆ„ì ë¶„í¬
 round(dhyper(1,3,37,5),4)
 round(phyper(1,3,37,5)- phyper(0,3,37,5),4)
 
 
 
-##4.8.3. Æ÷¾Æ¼ÛºĞÆ÷
-#[¿¹Á¦ 4.16]
-#´©ÀûºĞÆ÷ ÀÌ¿ë
+##4.8.3. í¬ì•„ì†¡ë¶„í¬
+#[ì˜ˆì œ 4.16]
+#ëˆ„ì ë¶„í¬ ì´ìš©
 round(1-ppois(10,7), 3)
 
-#È®·üÁú·®ÇÔ¼ö ÀÌ¿ë
+#í™•ë¥ ì§ˆëŸ‰í•¨ìˆ˜ ì´ìš©
 Mean = 7; Prob = 0
 for (i in 0:10){Prob <- Prob + dpois(i, Mean)}
 Prob
 round(1 - Prob, 3)
 
 
-#[¿¹Á¦ 4.16]
-#ÀÌÇ×ºĞÆ÷ ÀÌ¿ë
+#[ì˜ˆì œ 4.16]
+#ì´í•­ë¶„í¬ ì´ìš©
 pbinom(5,8000,0.001)
 
-#Æ÷¾Æ¼ÛºĞÆ÷ ÀÌ¿ë
+#í¬ì•„ì†¡ë¶„í¬ ì´ìš©
 ppois(5,8)
 
 
 
-## 4.9 ¿¬¼ÓÇüºĞÆ÷ÀÇ ¿¹
-##4.9.1. Á¤±ÔºĞÆ÷
+## 4.9 ì—°ì†í˜•ë¶„í¬ì˜ ì˜ˆ
+##4.9.1. ì •ê·œë¶„í¬
 
-#[¿¹Á¦ 4.18]
+#[ì˜ˆì œ 4.18]
 round(pnorm(50, mean=70, sd=12),4)
 round(pnorm(-1.67),4)
 
 round(qnorm(0.85),2)
 round(qnorm(0.85),2)*12 + 70
 
-#[¿¹Á¦ 4.19]
+#[ì˜ˆì œ 4.19]
 round(pnorm(834,800,40),4) - round(pnorm(778,800,40),4)
 round(pnorm(0.85),4) - round(pnorm(-.55),4)
 
 
 
-##4.9.2. Áö¼öºĞÆ÷
+##4.9.2. ì§€ìˆ˜ë¶„í¬
 
-#[¿¹Á¦ 4.20]
+#[ì˜ˆì œ 4.20]
 round(pexp(1,1/2),4)
 round(pbinom(3,10,pexp(1,1/2)),4)
 
 
 
 
-###Á¦5Àå. Ç¥º»ºĞÆ÷
-##5.2. Áß½É±ØÇÑÀÇ Á¤¸®
+###ì œ5ì¥. í‘œë³¸ë¶„í¬
+##5.2. ì¤‘ì‹¬ê·¹í•œì˜ ì •ë¦¬
 
-#[¿¹Á¦ 5.2]
+#[ì˜ˆì œ 5.2]
 round(pbinom(7,12,0.5) - pbinom(3,12,0.5), 4)
 round(pbinom(7,12,0.5),4) - round(pbinom(3,12,0.5),4)
 
@@ -186,7 +186,7 @@ round(pnorm(0.87) - pnorm(-1.44), 4)
 round(pnorm(0.87),4) - round(pnorm(-1.44),4)
 
 
-#[¿¹Á¦ 5.3]
+#[ì˜ˆì œ 5.3]
 
 round(1 - pbinom(495,900,1/2),4)
 round(1 - pnorm(495,450,15),4)
@@ -194,8 +194,8 @@ round(1 - pnorm(494.5,450,15),4)
 
 
 
-##5.3. Ç¥º»ºñÀ²ÀÇ ºĞÆ÷
-#[¿¹Á¦ 5.4]
+##5.3. í‘œë³¸ë¹„ìœ¨ì˜ ë¶„í¬
+#[ì˜ˆì œ 5.4]
 
 # X ~ B(36,0.6)
 # 0.5 <= hat(p)=X/n <= 0.7
@@ -208,9 +208,9 @@ round(pnorm(1.22),4) - round(pnorm(-1.22),4)
 
 
 
-##5.4. Ç¥º»ºĞÆ÷µé
+##5.4. í‘œë³¸ë¶„í¬ë“¤
 
-# t-ºĞÆ÷ÀÇ ±×·¡ÇÁ
+# t-ë¶„í¬ì˜ ê·¸ë˜í”„
 par(mfrow= c(1,1))
 X <- seq(-4, 4, length= 100)
 Hx <- dnorm(X)
@@ -220,7 +220,7 @@ Colors <- c("red", "blue", "darkgreen", "gold", "black")
 Labels <- c("df=1", "df=3", "df=8", "df=30", "normal")
 
 plot(X, Hx, type= "l", lty= 2, xlab= "t(or z) value",
-     ylab= "Density", main= "ÀÚÀ¯µµ¿¡ µû¸¥ ¿©·¯°¡Áö t-ºĞÆ÷µé")
+     ylab= "Density", main= "ììœ ë„ì— ë”°ë¥¸ ì—¬ëŸ¬ê°€ì§€ t-ë¶„í¬ë“¤")
 
 for (i in 1:4){lines(X, dt(X, Degf[i]), lwd= 2, col= Colors[i])}
 
@@ -234,13 +234,13 @@ round(qt(0.95,5),4)
 round(qt(0.95,5,lower.tail= TRUE),4)
 
 
-# ºĞÀ§¼ö
+# ë¶„ìœ„ìˆ˜
 round(pt(2.015,5,lower.tail= FALSE),4)
 round(1-pt(2.015,5),4)
 round(1-pt(2.015,5,lower.tail= TRUE),4)
 
 
-# ÀÚÀ¯µµ ¹«ÇÑ´ëÀÇ ºĞÀ§¼ö 
+# ììœ ë„ ë¬´í•œëŒ€ì˜ ë¶„ìœ„ìˆ˜ 
 round(pnorm(1.645, lower.tail= FALSE),4)
 round(pt(1.645, df= Inf, lower.tail= FALSE),4)
 round(1-pt(1.645, df= Inf),4)
@@ -252,8 +252,8 @@ round(1-pt(1.96, df= Inf),4)
 round(1-pt(1.96, df= Inf, lower.tail= TRUE),4)
 
 
-# ChiSquare-ºĞÆ÷ÀÇ ±×·¡ÇÁ
-# ChiSquare-ºĞÆ÷ ÀÚÀ¯µµ 5±îÁö
+# ChiSquare-ë¶„í¬ì˜ ê·¸ë˜í”„
+# ChiSquare-ë¶„í¬ ììœ ë„ 5ê¹Œì§€
 par(mfrow= c(1,2))
 X <- seq(0, 20, length=100)
 Hx <- dchisq(X,3)
@@ -264,7 +264,7 @@ Colors2 <- c("red", "blue", "black", "darkgreen", "gold" )
 Labels <- c("df=1", "df=2", "df=3", "df=4", "df=5")
 
 plot(X, Hx, type= "l", lwd= 2, lty= 1, xlab= "X^2 value", col= "black",
-     ylab= "Density", main= "ÀÚÀ¯µµ¿¡ µû¸¥ ")
+     ylab= "Density", main= "ììœ ë„ì— ë”°ë¥¸ ")
 
 for (i in 1:4){lines(X, dchisq(X, Degf[i]), lwd= 2, col= Colors1[i])}
 
@@ -272,7 +272,7 @@ legend("topright", inset= .1, title= "Distributions",
        Labels, lwd= 2, lty= c(1, 1, 1, 1, 1), col= Colors2)
 
 
-# ChiSquare-ºĞÆ÷ ÀÚÀ¯µµ 5ÀÌ»ó
+# ChiSquare-ë¶„í¬ ììœ ë„ 5ì´ìƒ
 X <- seq(0, 99, length=100)
 Hx <- dchisq(X,5)
 
@@ -281,7 +281,7 @@ Colors <- c("red", "blue", "black", "darkgreen", "gold" )
 Labels <- c("df=5", "df=10", "df=20", "df=30", "df=40")
 
 plot(X, Hx, type= "l", lwd= 2, lty= 1, xlab= "X^2 value", col= "red",
-     ylab= "Density", main= "¿©·¯°¡Áö ChiSquare-ºĞÆ÷µé")
+     ylab= "Density", main= "ì—¬ëŸ¬ê°€ì§€ ChiSquare-ë¶„í¬ë“¤")
 
 for (i in 2:5){lines(X, dchisq(X, Degf[i]), lwd= 2, col= Colors[i])}
 
@@ -301,7 +301,7 @@ round(qchisq(0.05,5),3)
 round(qchisq(0.05,5,lower.tail= TRUE),3)
 
 
-# ºĞÀ§¼ö
+# ë¶„ìœ„ìˆ˜
 round(pchisq(11.07,5,lower.tail= FALSE),2)
 round(1-pchisq(11.07,5),2)
 round(1-pchisq(11.07,5,lower.tail= TRUE),2)
@@ -312,7 +312,7 @@ round(1-pchisq(1.145,5,lower.tail= TRUE),2)
 
 
 
-# F-ºĞÆ÷ÀÇ ±×·¡ÇÁ
+# F-ë¶„í¬ì˜ ê·¸ë˜í”„
 install.packages(ggplot2)
 library(ggplot2)
 ggplot(data.frame(X= c(0, 5)), aes(x= X)) +
@@ -336,7 +336,7 @@ ggplot(data.frame(X= c(0, 5)), aes(x= X)) +
         annotate("text", x= 4.3, y= 1.2, label= "F(df1=10, df2=30)") + 
         annotate("text", x= 4.3, y= 1.0, label= "F(df1=50, df2=5)") +
         annotate("text", x= 4.3, y= 0.8, label= "F(df1=100, df2=100)") +
-        ggtitle("F-ºĞÆ÷")
+        ggtitle("F-ë¶„í¬")
 
 
 #F_alpha(d.f.)
@@ -345,13 +345,13 @@ round(qf(0.95,7,9),2)
 round(qf(0.95,7,9,lower.tail= TRUE),2)
 
 
-# ºĞÀ§¼ö
+# ë¶„ìœ„ìˆ˜
 round(pf(3.29,7,9,lower.tail= FALSE),2)
 round(1-pf(3.29,7,9),2)
 round(1-pf(3.29,7,9,lower.tail= TRUE),2)
 
 
-# F-ºĞÆ÷ÀÇ ¼ºÁú
+# F-ë¶„í¬ì˜ ì„±ì§ˆ
 round(qf(0.05,7,9,lower.tail= FALSE),2)
 round(1/qf(0.95,9,7,lower.tail= FALSE),2)
 
@@ -361,21 +361,21 @@ round(1/qf(0.05,9,7),2)
 
 
 
-##6Àå. ÃßÁ¤
-#6.2 ±¸°£ÃßÁ¤
-#6.2.1 ¸ğÆò±ÕÀÇ ±¸°£ÃßÁ¤
+##6ì¥. ì¶”ì •
+#6.2 êµ¬ê°„ì¶”ì •
+#6.2.1 ëª¨í‰ê· ì˜ êµ¬ê°„ì¶”ì •
 
-#[¿¹Á¦ 6.3] ¸ğºĞ»êÀ» ¾Æ´Â °æ¿ì
+#[ì˜ˆì œ 6.3] ëª¨ë¶„ì‚°ì„ ì•„ëŠ” ê²½ìš°
 X <- c(175, 176, 173, 175, 174, 173, 173, 176, 173, 179)
-Sd = 1.5           #±âÁöÀÇ Ç¥ÁØÆíÂ÷
-Num = length(X)    #ÀÚ·áÀÇ ¼ö
-Mean = mean(X)     #Æò±Õ
+Sd = 1.5           #ê¸°ì§€ì˜ í‘œì¤€í¸ì°¨
+Num = length(X)    #ìë£Œì˜ ìˆ˜
+Mean = mean(X)     #í‰ê· 
 z_0.025 = round(qnorm(0.975),2)
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê 
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚° 
 round(Mean - z_0.025*Sd/sqrt(Num),2)
 round(Mean + z_0.025*Sd/sqrt(Num),2)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë
+# ê²€ì • í•¨ìˆ˜ ì´ìš©
 install.packages("TeachingDemos")
 library(TeachingDemos)
 Z.test <- z.test(X, 175, sd= Sd, alternative= c("two.sided"))
@@ -384,38 +384,38 @@ Z.test$conf.int[1]; Z.test$conf.int[2]
 Z.test$conf.int
 
 
-#[¿¹Á¦ 6.4] ¸ğºĞ»êÀ» ¸ğ¸£´Â °æ¿ì
+#[ì˜ˆì œ 6.4] ëª¨ë¶„ì‚°ì„ ëª¨ë¥´ëŠ” ê²½ìš°
 X <- c(17.2, 16.9, 17.6, 18.0, 17.4, 16.3, 15.8, 17.2, 17.3, 16.0)
-Num = length(X)       #ÀÚ·áÀÇ ¼ö
-D.F. = Num - 1        # ÀÚÀ¯µµ 
-Mean = mean(X)        #Æò±Õ
-Sd = round(sd(X),3)   #Ç¥ÁØÆíÂ÷
+Num = length(X)       #ìë£Œì˜ ìˆ˜
+D.F. = Num - 1        # ììœ ë„ 
+Mean = mean(X)        #í‰ê· 
+Sd = round(sd(X),3)   #í‘œì¤€í¸ì°¨
 
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚°
 t_0.025 = round(qt(0.975,D.F.),3)
 round(Mean - t_0.025*Sd/sqrt(Num),2)
 round(Mean + t_0.025*Sd/sqrt(Num),2)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë
+# ê²€ì • í•¨ìˆ˜ ì´ìš©
 T.test <- t.test(X)
 names(T.test)
 T.test$conf.int[1]; T.test$conf.int[2]
 T.test$conf.int
 
 
-##[¿¹Á¦ 6.5] ¸ğºĞ»êÀ» ¸ğ¸£´Â °æ¿ì
+##[ì˜ˆì œ 6.5] ëª¨ë¶„ì‚°ì„ ëª¨ë¥´ëŠ” ê²½ìš°
 X <- c(175, 176, 173, 175, 174, 173, 173, 176, 173, 179)
-Num = length(X)      #ÀÚ·áÀÇ ¼ö
-D.F. = Num - 1       #ÀÚÀ¯µµ 
-Mean = mean(X)       #Æò±Õ
-Sd = round(sd(X),2)  #Ç¥ÁØÆíÂ÷
+Num = length(X)      #ìë£Œì˜ ìˆ˜
+D.F. = Num - 1       #ììœ ë„ 
+Mean = mean(X)       #í‰ê· 
+Sd = round(sd(X),2)  #í‘œì¤€í¸ì°¨
 
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚°
 t_0.025 = round(qt(0.975,D.F.),3)
 round(Mean - t_0.025*Sd/sqrt(Num),1)
 round(Mean + t_0.025*Sd/sqrt(Num),1)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë
+# ê²€ì • í•¨ìˆ˜ ì´ìš©
 T.test <- t.test(X)
 names(T.test)
 T.test$conf.int[1]; T.test$conf.int[2]
@@ -424,13 +424,13 @@ T.test$conf.int
 
 
 
-#6.2.2 ¸ğºñÀ²ÀÇ ±¸°£ÃßÁ¤
+#6.2.2 ëª¨ë¹„ìœ¨ì˜ êµ¬ê°„ì¶”ì •
 
-#[¿¹Á¦ 6.6] 
-Data <- read.csv(file='6Àå_¿¹Á¦6.6.csv', header = TRUE)
+#[ì˜ˆì œ 6.6] 
+Data <- read.csv(file='6ì¥_ì˜ˆì œ6.6.csv', header = TRUE)
 attach(Data)
 str(Data)
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚°
 Num = length(Lot)
 Num_F = length(Lot[Lot=="F"]); 
 P.hat <- Num_F/Num
@@ -442,7 +442,7 @@ Upper <- P.hat + z_0.025*sqrt(P.hat*(1-P.hat)/Num)
 Upper
 
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(0) : z.test
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(0) : z.test
 install.packages("TeachingDemos")
 library(TeachingDemos)
 x=0
@@ -450,17 +450,17 @@ for(i in 1:100){if(Lot[i]=="F"){X[i]=1} else{X[i]=0}}
 Sd = sqrt(0.02*0.98)
 z.test(X, sd = Sd)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(1)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(1)
 Prop.test <- prop.test(Num_F, Num)
 Prop.test$conf.int[1]; Prop.test$conf.int[2]
 Prop.test$conf.int
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(2)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(2)
 Prop.test <- prop.test(Num_F, Num, correct = FALSE)
 Prop.test$conf.int[1]; Prop.test$conf.int[2]
 Prop.test$conf.int
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(3)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(3)
 Binom.test <- binom.test( c(Num_F, Num-Num_F))
 Binom.test$conf.int[1]; Binom.test$conf.int[2]
 Binom.test$conf.int
@@ -469,12 +469,12 @@ detach(Data)
 
 
 
-#[¿¹Á¦ 6.7] 
-Data <- read.csv(file='6Àå_¿¹Á¦6.7.csv', header = TRUE)
+#[ì˜ˆì œ 6.7] 
+Data <- read.csv(file='6ì¥_ì˜ˆì œ6.7.csv', header = TRUE)
 attach(Data)
 str(Data)
 
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚°
 Num = length(Preference)
 Num_F = length(Preference[Preference=="favor"]); 
 P.hat <- Num_F/Num
@@ -486,7 +486,7 @@ Upper <- P.hat + z_0.025*sqrt(P.hat*(1-P.hat)/Num)
 Upper
 
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(0) : z.test & t.test
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(0) : z.test & t.test
 install.packages("TeachingDemos")
 library(TeachingDemos)
 X=0
@@ -496,17 +496,17 @@ z.test(X, sd = Sd)
 t.test(X)
 
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(1)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(1)
 Prop.test <- prop.test(Num_F, Num)
 Prop.test$conf.int[1]; Prop.test$conf.int[2]
 Prop.test$conf.int
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(2)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(2)
 Prop.test <- prop.test(Num_F, Num, correct = FALSE)
 Prop.test$conf.int[1]; Prop.test$conf.int[2]
 Prop.test$conf.int
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(3)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(3)
 Binom.test <- binom.test( c(Num_F, Num-Num_F))
 Binom.test$conf.int[1]; Binom.test$conf.int[2]
 Binom.test$conf.int
@@ -515,24 +515,24 @@ detach(Data)
 
 
 
-#6.2.3 ¸ğºĞ»êÀÇ ±¸°£ÃßÁ¤
+#6.2.3 ëª¨ë¶„ì‚°ì˜ êµ¬ê°„ì¶”ì •
 
-#[¿¹Á¦ 6.8] 
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê
+#[ì˜ˆì œ 6.8] 
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚°
 X <- c(45, 47, 44, 46, 45, 47, 48)
-Num = length(X)    #ÀÚ·áÀÇ ¼ö
-D.F. = Num - 1     #ÀÚÀ¯µµ 
-Mean = mean(X)     #Ç¥º»Æò±Õ
-Var = var(X)       #Ç¥º»ºĞ»ê 
-Sd = sd(X)         #Ç¥ÁØÆíÂ÷
+Num = length(X)    #ìë£Œì˜ ìˆ˜
+D.F. = Num - 1     #ììœ ë„ 
+Mean = mean(X)     #í‘œë³¸í‰ê· 
+Var = var(X)       #í‘œë³¸ë¶„ì‚° 
+Sd = sd(X)         #í‘œì¤€í¸ì°¨
 
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚°
 chi_0.025 = round(qchisq(0.975,D.F.),2)
 chi_0.975 = round(qchisq(0.025,D.F.),2)
 round(D.F.*Var/chi_0.025,2)
 round(D.F.*Var/chi_0.975,2)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë
+# ê²€ì • í•¨ìˆ˜ ì´ìš©
 install.packages("TeachingDemos")
 library(TeachingDemos)
 Sigma.test <- sigma.test(X)
@@ -542,28 +542,28 @@ Sigma.test$conf.int
 
 
 
-#6.2.5 ¸ğÆò±ÕÀÇ Â÷ÀÌ¿¡ ´ëÇÑ ±¸°£ÃßÁ¤
+#6.2.5 ëª¨í‰ê· ì˜ ì°¨ì´ì— ëŒ€í•œ êµ¬ê°„ì¶”ì •
 
-#[¿¹Á¦ 6.14]
+#[ì˜ˆì œ 6.14]
 X_1 = c(13, 14, 9, 11, 13)
 X_2 = c(9, 10, 12, 11, 8)
 Num_1 = length(X_1); D.F._1 = Num_1 - 1;
 Num_2 = length(X_2); D.F._2 = Num_2 - 1;
-Pool.Var = (D.F._1*var(X_1)+D.F._2*var(X_2))/(D.F._1+D.F._2)      #°øµ¿ºĞ»ê
+Pool.Var = (D.F._1*var(X_1)+D.F._2*var(X_2))/(D.F._1+D.F._2)      #ê³µë™ë¶„ì‚°
 
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚°
 t_0.025 = round(qt(0.975,D.F._1+D.F._2),3)
 round((mean(X_1)-mean(X_2))-t_0.025*sqrt(Pool.Var)*sqrt(1/Num_1+1/Num_2),3)
 round((mean(X_1)-mean(X_2))+t_0.025*sqrt(Pool.Var)*sqrt(1/Num_1+1/Num_2),3)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë - µÎ ¸ğºĞ»êÀÌ °°Àº °æ¿ì
+# ê²€ì • í•¨ìˆ˜ ì´ìš© - ë‘ ëª¨ë¶„ì‚°ì´ ê°™ì€ ê²½ìš°
 T.test <- t.test(X_1,X_2, var.equal = TRUE)
 names(T.test)
 T.test$conf.int[1]; T.test$conf.int[2]
 T.test$conf.int
 T.test$parameter
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë - µÎ ¸ğºĞ»êÀÌ ´Ù¸¥ °æ¿ì
+# ê²€ì • í•¨ìˆ˜ ì´ìš© - ë‘ ëª¨ë¶„ì‚°ì´ ë‹¤ë¥¸ ê²½ìš°
 T.test <- t.test(X_1,X_2, var.equal = FALSE)
 names(T.test)
 T.test$conf.int[1]; T.test$conf.int[2]
@@ -571,7 +571,7 @@ T.test$conf.int
 T.test$parameter
 
 
-#[¿¹Á¦ 6.15]
+#[ì˜ˆì œ 6.15]
 X_1 = c(68, 82, 80, 88)
 X_2 = c(60, 74, 84, 84)
 X = X_1 - X_2
@@ -579,47 +579,47 @@ Num = length(X); D.F. = Num - 1;
 Var = var(X)
 Sd = sd(X)
 
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚°
 t_0.025 = round(qt(0.975,D.F.),3)
 round(mean(X)-t_0.025*Sd/sqrt(Num),3)
 round(mean(X)+t_0.025*Sd/sqrt(Num),3)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë
+# ê²€ì • í•¨ìˆ˜ ì´ìš©
 T.test <- t.test(X_1, X_2,paired = TRUE)
 T.test$conf.int[1]; T.test$conf.int[2]
 T.test$conf.int
 
 
 
-#6.2.6 ¸ğºñÀ²ÀÇ Â÷ÀÌ¿¡ ´ëÇÑ ±¸°£ÃßÁ¤
+#6.2.6 ëª¨ë¹„ìœ¨ì˜ ì°¨ì´ì— ëŒ€í•œ êµ¬ê°„ì¶”ì •
 
-#[¿¹Á¦ 6.16]
+#[ì˜ˆì œ 6.16]
 Buy = c(40, 20)
 Total = c(1000, 1000)
 Prob = Buy/Total
 
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚°
 z_0.025 = round(qnorm(0.975),2)
 Se = sqrt(Prob[1]*(1-Prob[1])/Total[1] + Prob[2]*(1-Prob[2])/Total[2])
 round((Prob[1]-Prob[2])-z_0.025*Se ,3)
 round((Prob[1]-Prob[2])+z_0.025*Se ,3)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(1)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(1)
 Prop.test <- prop.test(Buy, Total)
 Prop.test$conf.int[1]; Prop.test$conf.int[2]
 Prop.test$conf.int
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(2)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(2)
 Prop.test <- prop.test(Buy, Total, correct = FALSE)
 Prop.test$conf.int[1]; Prop.test$conf.int[2]
 Prop.test$conf.int
 
 
 
-#6.2.7 ¸ğºĞ»ê ºñÀ²¿¡ ´ëÇÑ ±¸°£ÃßÁ¤
+#6.2.7 ëª¨ë¶„ì‚° ë¹„ìœ¨ì— ëŒ€í•œ êµ¬ê°„ì¶”ì •
 
-#[¿¹Á¦ 6.17]
-Data <- read.csv(file='6Àå_¿¹Á¦6.17.csv', header = TRUE)
+#[ì˜ˆì œ 6.17]
+Data <- read.csv(file='6ì¥_ì˜ˆì œ6.17.csv', header = TRUE)
 attach(Data)
 str(Data)
 
@@ -632,14 +632,14 @@ Mean_A = mean(A$Nicotin);          Mean_B = mean(B$Nicotin)
 Sd_A = round(sd(A$Nicotin),1);     Sd_B = round(sd(B$Nicotin),1)
 
 
-# ÇÏÇÑ°ú »óÇÑÀÇ °è»ê
+# í•˜í•œê³¼ ìƒí•œì˜ ê³„ì‚°
 f_0.025 = round(qf(0.975,D.F._A,D.F._B),2)
 f_0.975 = round(qf(0.975,D.F._B,D.F._A),2)   # or 
 #f_0.975 = round(1/qf(0.025,D.F._A,D.F._B),2)
 round(Sd_A^2/Sd_B^2/f_0.025,4)
 round(Sd_A^2/Sd_B^2*f_0.975,4)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë
+# ê²€ì • í•¨ìˆ˜ ì´ìš©
 Var.test <- var.test(A$Nicotine, B$Nicotine)
 Var.test$conf.int[1]; Var.test$conf.int[2]
 Var.test$conf.int
@@ -649,15 +649,15 @@ detach(Data)
 
 
 
-##7Àå. °ËÁ¤
-#7.2 ¸ğÆò±ÕÀÇ °ËÁ¤
-#7.2.1 ´ÜÀÏÁı´ÜÀÇ ¸ğÆò±ÕÀÇ °ËÁ¤
+##7ì¥. ê²€ì •
+#7.2 ëª¨í‰ê· ì˜ ê²€ì •
+#7.2.1 ë‹¨ì¼ì§‘ë‹¨ì˜ ëª¨í‰ê· ì˜ ê²€ì •
 
-#[¿¹Á¦ 7.2] 
-Data <- read.csv(file='7Àå_¿¹Á¦7.2.csv', header = TRUE)
+#[ì˜ˆì œ 7.2] 
+Data <- read.csv(file='7ì¥_ì˜ˆì œ7.2.csv', header = TRUE)
 attach(Data)
 mean(Tar)
-sd(Tar)    #±³ÀçÀÇ ¿¹´Â 0.14·Î ÇÑ ¿¹ÀÓ!! 
+sd(Tar)    #êµì¬ì˜ ì˜ˆëŠ” 0.14ë¡œ í•œ ì˜ˆì„!! 
 D.F. <- length(Tar)-1
 Alpha = 0.05
 T.test <- t.test(Data$Tar, mu=4, alternative = "less")
@@ -667,21 +667,21 @@ if (T.test$statistic < t_0.95) {"Reject Ho"} else{"Ho:  Accpet"}
 if (T.test$p.value < Alpha) {"Reject Ho"} else{"Ho:  Accpet"}
 
 
-#7.2.2 µÎ Áı´ÜÀÇ ¸ğÆò±ÕÀÇ µ¿ÀÏ¼º¿¡ ´ëÇÑ °ËÁ¤
+#7.2.2 ë‘ ì§‘ë‹¨ì˜ ëª¨í‰ê· ì˜ ë™ì¼ì„±ì— ëŒ€í•œ ê²€ì •
 
-#[¿¹Á¦ 7.5] 
+#[ì˜ˆì œ 7.5] 
 New <- c(15, 10, 13, 7, 9 , 8, 21, 9, 14, 8)
 Placebo <- c(15, 14, 12, 8, 14, 7, 16, 10, 15, 12)
 t.test(New, Placebo, var.equal = TRUE)
 
 
-#[¿¹Á¦ 7.6] 
+#[ì˜ˆì œ 7.6] 
 New <- c(15, 10, 13, 7, 9 , 8, 21, 9, 14, 8)
 Placebo <- c(15, 14, 12, 8, 14, 7, 16, 10, 15, 12)
 t.test(New, Placebo, var.equal = FALSE)
 
 
-#[¿¹Á¦ 7.7] 
+#[ì˜ˆì œ 7.7] 
 X <- c(50, 45, 55, 60, 63, 48, 50, 70, 56, 44)
 Y <- c(48, 45, 50, 60, 60, 50, 49, 60, 55, 48)
 t.test(X, Y, alternative= "greater", paired= TRUE)
@@ -689,31 +689,31 @@ t.test(X, Y, alternative= "greater", paired= TRUE)
 
 
 
-#7.3 ¸ğºñÀ²ÀÇ °ËÁ¤
-#7.3.1 ´ÜÀÏÁı´ÜÀÇ ¸ğºñÀ²¿¡ ´ëÇÑ °ËÁ¤
+#7.3 ëª¨ë¹„ìœ¨ì˜ ê²€ì •
+#7.3.1 ë‹¨ì¼ì§‘ë‹¨ì˜ ëª¨ë¹„ìœ¨ì— ëŒ€í•œ ê²€ì •
 
-#[¿¹Á¦ 7.8] 
-Data <- read.csv(file='7Àå_¿¹Á¦7.8.csv', header = TRUE)
+#[ì˜ˆì œ 7.8] 
+Data <- read.csv(file='7ì¥_ì˜ˆì œ7.8.csv', header = TRUE)
 attach(Data)
 str(Data)
-# ±âÃÊÅë°è·® °è»ê
+# ê¸°ì´ˆí†µê³„ëŸ‰ ê³„ì‚°
 Num = length(Product)
 Num_D = length(Product[Product=="D"]); 
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(0) : z.test 
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(0) : z.test 
 install.packages("TeachingDemos")
 library(TeachingDemos)
 for(i in 1:100){if(Product[i]=="D"){X[i]=1} else{X[i]=0}}
 Sd = sqrt(0.05*0.95)
 z.test(X, 0.05, sd = Sd, alternative = "less")
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(1)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(1)
 prop.test(Num_D, Num, p=0.05, alternative = "less")
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(2)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(2)
 prop.test(Num_D, Num, p=0.05, alternative = "less", correct = FALSE)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(3)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(3)
 binom.test( c(Num_D, Num-Num_D), p=0.05, alternative = "less")
 
 detach(Data)
@@ -722,10 +722,10 @@ detach(Data)
 
 
 
-#7.3.2 µÎ Áı´ÜÀÇ ¸ğºñÀ²ÀÇ µ¿ÀÏ¼º¿¡ ´ëÇÑ °ËÁ¤
+#7.3.2 ë‘ ì§‘ë‹¨ì˜ ëª¨ë¹„ìœ¨ì˜ ë™ì¼ì„±ì— ëŒ€í•œ ê²€ì •
 
-#[¿¹Á¦ 7.9] 
-Data <- read.csv(file='7Àå_¿¹Á¦7.9.csv', header = TRUE)
+#[ì˜ˆì œ 7.9] 
+Data <- read.csv(file='7ì¥_ì˜ˆì œ7.9.csv', header = TRUE)
 attach(Data)
 str(Data)
 
@@ -738,21 +738,21 @@ Defect = c(sum(A), sum(B))
 Total = c(length(A), length(B))
 Prob = Defect/Total
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(1)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(1)
 prop.test(Defect, Total, correct = FALSE)
 
-# °ËÁ¤ ÇÔ¼ö ÀÌ¿ë(2)
+# ê²€ì • í•¨ìˆ˜ ì´ìš©(2)
 prop.test(Defect, Total)
 
 detach(Data)
 
 
 
-#7.4. ¸ğºĞ»êÀÇ °ËÁ¤
-#7.4.1. ´ÜÀÏÁı´ÜÀÇ ¸ğºĞ»êÀÇ °ËÁ¤
+#7.4. ëª¨ë¶„ì‚°ì˜ ê²€ì •
+#7.4.1. ë‹¨ì¼ì§‘ë‹¨ì˜ ëª¨ë¶„ì‚°ì˜ ê²€ì •
 
-#[¿¹Á¦ 7.10] 
-Data <- read.csv(file='7Àå_¿¹Á¦7.10.csv', header = TRUE)
+#[ì˜ˆì œ 7.10] 
+Data <- read.csv(file='7ì¥_ì˜ˆì œ7.10.csv', header = TRUE)
 attach(Data)
 str(Data)
 
@@ -765,23 +765,23 @@ Alpha = 0.05
 Sigma.test <- sigma.test(IQ, sigmasq= 225, alternative= c("two.sided"))
 Sigma.test
 names(Sigma.test)
-Sigma.test$statistic    # °ËÁ¤Åë°è·®ÀÇ °ª
+Sigma.test$statistic    # ê²€ì •í†µê³„ëŸ‰ì˜ ê°’
 
-# ±â°¢ ±âÁØ°ªÀÇ ÇÏÇÑ°ú »óÇÑ
+# ê¸°ê° ê¸°ì¤€ê°’ì˜ í•˜í•œê³¼ ìƒí•œ
 Chi_Top= round(qchisq(1-Alpha/2, D.F.),2)
 Chi_Bottom= round(qchisq(Alpha/2, D.F.),2)
 
 if ( Sigma.test$statistic > Chi_Bottom & Sigma.test$statistic < Chi_Top ) 
-{ cat('\n ±Í¹«°¡¼³ Ho Ã¤ÅÃ !!')} else{ cat('\n ±Í¹«°¡¼³ Ho ±â°¢!!')}
+{ cat('\n ê·€ë¬´ê°€ì„¤ Ho ì±„íƒ !!')} else{ cat('\n ê·€ë¬´ê°€ì„¤ Ho ê¸°ê°!!')}
 
 detach(Data)
 
 
 
 
-#7.4.2. µÎ Áı´ÜÀÇ ¸ğºĞ»êÀÇ µ¿ÀÏ¼º¿¡ ´ëÇÑ °ËÁ¤
+#7.4.2. ë‘ ì§‘ë‹¨ì˜ ëª¨ë¶„ì‚°ì˜ ë™ì¼ì„±ì— ëŒ€í•œ ê²€ì •
 
-#[¿¹Á¦ 7.12] 
+#[ì˜ˆì œ 7.12] 
 New <- c(15, 10, 13, 7, 9 , 8, 21, 9, 14, 8)
 Placebo <- c(15, 14, 12, 8, 14, 7, 16, 10, 15, 12)
 
@@ -791,19 +791,19 @@ Alpha= 0.05
 Var.test= var.test(New, Placebo, alternative = c("two.sided"))
 Var.test
 
-# ±â°¢ ±âÁØ°ªÀÇ ÇÏÇÑ°ú »óÇÑ
+# ê¸°ê° ê¸°ì¤€ê°’ì˜ í•˜í•œê³¼ ìƒí•œ
 F_Top= round(qf(1-Alpha/2, D.F.1, D.F.2),2)
 F_Bottom= round(qf(Alpha/2, D.F.1, D.F.2),2)
 
 if ( Var.test$statistic > F_Bottom & Var.test$statistic < F_Top ) 
-{ cat('\n ±Í¹«°¡¼³ Ho Ã¤ÅÃ !!')} else{ cat('\n ±Í¹«°¡¼³ Ho ±â°¢!!')}
+{ cat('\n ê·€ë¬´ê°€ì„¤ Ho ì±„íƒ !!')} else{ cat('\n ê·€ë¬´ê°€ì„¤ Ho ê¸°ê°!!')}
 
                    
 
 
-##8Àå. »ó°üºĞ¼®
-#[Ç¥ 8.1]ÀÇ Ã³¸®
-Data <- read.csv(file='8Àå_[Ç¥8.1].csv', header = TRUE)
+##8ì¥. ìƒê´€ë¶„ì„
+#[í‘œ 8.1]ì˜ ì²˜ë¦¬
+Data <- read.csv(file='8ì¥_[í‘œ8.1].csv', header = TRUE)
 attach(Data)
 str(Data)
 
@@ -815,31 +815,31 @@ min(Age);    min(Weight);      min(Time)
 max(Age);    max(Weight);      max(Time)
 
 par(mfrow=c(1,3))
-plot(Age, Weight, xlab="³ªÀÌ", ylab="¸ö¹«°Ô" )
-plot(Age, Time, xlab="³ªÀÌ", ylab="¼Ò¿ä½Ã°£" )
-plot(Time, Weight, xlab="¼î¿ä½Ã°£", ylab="¸ö¹«°Ô" )
+plot(Age, Weight, xlab="ë‚˜ì´", ylab="ëª¸ë¬´ê²Œ" )
+plot(Age, Time, xlab="ë‚˜ì´", ylab="ì†Œìš”ì‹œê°„" )
+plot(Time, Weight, xlab="ì‡¼ìš”ì‹œê°„", ylab="ëª¸ë¬´ê²Œ" )
 
 detach(Data)
 
 
-#[¿¹Á¦ 8.1]
+#[ì˜ˆì œ 8.1]
 Weight <- c(83, 67, 92, 38, 95, 75, 70, 74, 100, 73)
 Height <- c(170, 168, 170, 142, 152, 145, 150, 163, 145, 163)
-plot(Height, Weight, xlab="Å°", ylab="¸ö¹«°Ô")
+plot(Height, Weight, xlab="í‚¤", ylab="ëª¸ë¬´ê²Œ")
 cor(Height, Weight)
 
 
-#[¿¹Á¦ 8.2]
+#[ì˜ˆì œ 8.2]
 Temp <- c(13.9, 31.1, 11.7, 23.9, 32.2, 12.8, 15, 7.8, 17.2, 21.1)
 Rain <- c(796, 525, 864, 770, 948, 804, 897, 1118, 762, 838)
-plot(Temp, Rain, xlab="¿Âµµ", ylab="°­¼ö·®")
+plot(Temp, Rain, xlab="ì˜¨ë„", ylab="ê°•ìˆ˜ëŸ‰")
 cor(Temp, Rain)
 
 
-#[¿¹Á¦ 8.3]
+#[ì˜ˆì œ 8.3]
 X <- c(50, 70, 70, 40,90, 70, 60, 50, 80, 60)
 Y <- c(60, 60, 80, 50, 80, 60, 60, 60, 80, 70)
-plot(X, Y, xlab="Åë°èÇĞ Á¡¼ö", ylab="¿µ¾î Á¡¼ö")
+plot(X, Y, xlab="í†µê³„í•™ ì ìˆ˜", ylab="ì˜ì–´ ì ìˆ˜")
 
 Num= length(X)
 D.F.= Num-2
@@ -847,27 +847,27 @@ Alpha = 0.05
 Cor.test <- cor.test(X,Y,alternative= c("two.sided"))
 Cor.test
 names(Cor.test)
-Cor.test$statistic    # °ËÁ¤Åë°è·®ÀÇ °ª
+Cor.test$statistic    # ê²€ì •í†µê³„ëŸ‰ì˜ ê°’
 
 
-# ±â°¢ ±âÁØ°ªÀÇ ÇÏÇÑ°ú »óÇÑ
+# ê¸°ê° ê¸°ì¤€ê°’ì˜ í•˜í•œê³¼ ìƒí•œ
 T_Top= round(qt(1-Alpha/2, D.F.),4)
 T_Bottom= round(qt(Alpha/2, D.F.),4)
 
 if ( Cor.test$statistic > T_Bottom & Cor.test$statistic < T_Top ) 
-{ cat('\n ±Í¹«°¡¼³ Ho Ã¤ÅÃ !!')} else{ cat('\n ±Í¹«°¡¼³ Ho ±â°¢!!')}
+{ cat('\n ê·€ë¬´ê°€ì„¤ Ho ì±„íƒ !!')} else{ cat('\n ê·€ë¬´ê°€ì„¤ Ho ê¸°ê°!!')}
 
 
 
 
-##9Àå. È¸±ÍºĞ¼®
-#9.1 È¸±ÍÀÇ ÀÌÇØ
+##9ì¥. íšŒê·€ë¶„ì„
+#9.1 íšŒê·€ì˜ ì´í•´
 
-#[¿¹Á¦ 9.1]
+#[ì˜ˆì œ 9.1]
 Year <- c(96, 97, 98, 99, 00, 01)
 Outcome <- c(16, 20, 27, 39, 56, 63)
 Income <- c(2, 3, 4, 7, 11, 11)
-plot(Outcome, Income, xlab="¼öÃâ¾×", ylab="¼öÀÔ¾×")
+plot(Outcome, Income, xlab="ìˆ˜ì¶œì•¡", ylab="ìˆ˜ì…ì•¡")
 
 Num= length(Year)
 D.F.= Num-2
@@ -875,46 +875,46 @@ Alpha = 0.01
 Cor.test <- cor.test(Outcome, Income, alternative= c("two.sided"))
 Cor.test
 names(Cor.test)
-Cor.test$statistic    # °ËÁ¤Åë°è·®ÀÇ °ª  - ÀÚ¸®¼ö ¹İ¿Ã¸²¿¡ µû¶ó Â÷ÀÌ ¹ß»ı!! 
+Cor.test$statistic    # ê²€ì •í†µê³„ëŸ‰ì˜ ê°’  - ìë¦¬ìˆ˜ ë°˜ì˜¬ë¦¼ì— ë”°ë¼ ì°¨ì´ ë°œìƒ!! 
 
-# ±â°¢ ±âÁØ°ªÀÇ ÇÏÇÑ°ú »óÇÑ
+# ê¸°ê° ê¸°ì¤€ê°’ì˜ í•˜í•œê³¼ ìƒí•œ
 T_Top= round(qt(1-Alpha/2, D.F.),3)
 T_Bottom= round(qt(Alpha/2, D.F.),3)
 
 if ( Cor.test$statistic > T_Bottom & Cor.test$statistic < T_Top ) 
-{ cat('\n ±Í¹«°¡¼³ Ho Ã¤ÅÃ !!')} else{ cat('\n ±Í¹«°¡¼³ Ho ±â°¢!!')}
+{ cat('\n ê·€ë¬´ê°€ì„¤ Ho ì±„íƒ !!')} else{ cat('\n ê·€ë¬´ê°€ì„¤ Ho ê¸°ê°!!')}
 
-Reg = lm(Income ~ Outcome)   #¼±ÇüÈ¸±Í
+Reg = lm(Income ~ Outcome)   #ì„ í˜•íšŒê·€
 names(Reg)
 abline(Reg)
 
 
 
-#[¿¹Á¦ 9.2]
+#[ì˜ˆì œ 9.2]
 X <- c(1, 2, 3, 6, 8, 10)
 Y <- c(1800, 1400, 1300, 1000, 600, 500)
 plot(X, Y)
 
-Reg = lm(Y ~ X)   #¼±ÇüÈ¸±Í
+Reg = lm(Y ~ X)   #ì„ í˜•íšŒê·€
 names(Reg)
 abline(Reg)
 
 
-#[¿¹Á¦ 9.3]
-Data <- read.csv(file='9Àå_¿¹Á¦9.3.csv', header = TRUE)
+#[ì˜ˆì œ 9.3]
+Data <- read.csv(file='9ì¥_ì˜ˆì œ9.3.csv', header = TRUE)
 attach(Data)
 str(Data)
 
 Lm <- lm(Weight ~ Height, Data)
 Lm
 
-plot(Height, Weight, main = "ÀÚ·á¿Í È¸±ÍÁ÷¼±" )
+plot(Height, Weight, main = "ìë£Œì™€ íšŒê·€ì§ì„ " )
 abline(coef(Lm))
 
 summary(Lm)
 anova(Lm)
 
-deviance(Lm)    # ¶Ç´Â sum((Weight - predict(Lm))^2)
+deviance(Lm)    # ë˜ëŠ” sum((Weight - predict(Lm))^2)
 
 str(anova(Lm))
 anova(Lm)$Df            # Degree of Freedom
@@ -923,13 +923,13 @@ anova(Lm)$Mean          # MSR MSE
 anova(Lm)$F             # f-value
 anova(Lm)$Pr            # p-value
 
-confint(Lm)[2,]        # ¶Ç´Â confint(Lm, level = 0.95)
+confint(Lm)[2,]        # ë˜ëŠ” confint(Lm, level = 0.95)
 
 detach(Data)
 
 
 
-#[¿¹Á¦ 9.4]
+#[ì˜ˆì œ 9.4]
 Age <- c( 18, 23, 25, 35, 65, 54, 34, 56, 72, 19, 23, 42, 18, 39, 37)
 Max <- c(202,186,187,180,156,169,174,172,153,199,193,174,198,183,178)
 
@@ -938,13 +938,13 @@ Data <- data.frame(Age, Max)
 MaxAge <- lm(Max ~ Age, Data)
 MaxAge
 
-plot(Age, Max, main = "ÀÚ·á¿Í È¸±ÍÁ÷¼±" )
+plot(Age, Max, main = "ìë£Œì™€ íšŒê·€ì§ì„ " )
 abline(coef(MaxAge))
 
 summary(MaxAge)
 anova(MaxAge)
 
-deviance(MaxAge)       # ¶Ç´Â 
+deviance(MaxAge)       # ë˜ëŠ” 
 sum((Max - predict(MaxAge))^2)
 
 str(anova(MaxAge))
@@ -955,13 +955,13 @@ anova(MaxAge)$Mean          # MSR MSE
 anova(MaxAge)$F             # f-value
 anova(MaxAge)$Pr            # p-value
 
-confint(MaxAge)        # ¶Ç´Â confint(MaxAge, level = 0.95)
+confint(MaxAge)        # ë˜ëŠ” confint(MaxAge, level = 0.95)
 
-fitted.values(MaxAge)  # ¶Ç´Â fitted(MaxAge)
+fitted.values(MaxAge)  # ë˜ëŠ” fitted(MaxAge)
 residuals(MaxAge)
 
-# ±³Àç¿Í ºñ±³ À§ÇØ level= 0.90 »ç¿ë
-predict(MaxAge)        #  ¶Ç´Â predict(MaxAge, interval= "none")  
+# êµì¬ì™€ ë¹„êµ ìœ„í•´ level= 0.90 ì‚¬ìš©
+predict(MaxAge)        #  ë˜ëŠ” predict(MaxAge, interval= "none")  
 predict(MaxAge, interval= "confidence", level= 0.90)     #  E(y)
 predict(MaxAge, interval= "prediction", level= 0.90)     #  y_p  
 
@@ -973,7 +973,7 @@ predict(MaxAge, data.frame(Age= 25), interval= "prediction", level= 0.90)
 Age <- seq(min(Age), max(Age), 0.1)
 Pc <- predict(MaxAge, data.frame(Age), interval= "confidence", level= 0.90)
 Pp <- predict(MaxAge, data.frame(Age), interval= "prediction", level= 0.90)
-matplot(Age, Pc, ylab= "Max", main = " ¿¹Ãø°ªÀÇ ½Å·Ú±¸°£[ E(y) ¹× y_p ]",
+matplot(Age, Pc, ylab= "Max", main = " ì˜ˆì¸¡ê°’ì˜ ì‹ ë¢°êµ¬ê°„[ E(y) ë° y_p ]",
         type= 'l', lty= 1, col= "black")
 matlines(Age, Pp, type= 'l', lty= 2, col= c("black", "red", "red"))
 
@@ -981,47 +981,47 @@ Opar <- par(mfrow= c(2,3))
 plot(MaxAge, which= c(1:6), las= 1) 
 par(Opar)
 
-##las(the style of axis labels) : Ãà ¶óº§ ¹æÇâ ¿É¼Ç
-# 0: Ãà°ú ¾ğÁ¦³ª ÆòÇà[±âº» ¿É¼Ç] 
-# 1: ¾ğÁ¦³ª °¡·Î ¹æÇâ 
-# 2: ¾ğÁ¦³ª Ãà°ú Á÷°¢ ¹æÇâ 
-# 3: ¾ğÁ¦³ª ¼¼·Î ¹æÇâ
+##las(the style of axis labels) : ì¶• ë¼ë²¨ ë°©í–¥ ì˜µì…˜
+# 0: ì¶•ê³¼ ì–¸ì œë‚˜ í‰í–‰[ê¸°ë³¸ ì˜µì…˜] 
+# 1: ì–¸ì œë‚˜ ê°€ë¡œ ë°©í–¥ 
+# 2: ì–¸ì œë‚˜ ì¶•ê³¼ ì§ê° ë°©í–¥ 
+# 3: ì–¸ì œë‚˜ ì„¸ë¡œ ë°©í–¥
 
 plot(MaxAge, which= c(1), las= 0) 
 #1 Residuals vs Fitted 
-#   * X-Ãà : ¼±Çü È¸±Í·Î ¿¹ÃøµÈ Y °ª, Y-Ãà : ÀÜÂ÷.
-#   * ¼±ÇüÈ¸±Í¿¡¼­ÀÇ °¡Á¤ :  ¿ÀÂ÷ÀÇ Æò±Õ 0, ºĞ»êÀÌ ÀÏÁ¤ÇÑ Á¤±Ô ºĞÆ÷
-#     => ¿¹ÃøµÈ Y °ª°ú ¹«°üÇÏ°Ô ÀÜÂ÷ÀÇ Æò±ÕÀº 0, ºĞ»êÀº ÀÏÁ¤ÇØ
-#     => ÀÌ ±×·¡ÇÁ¿¡¼­´Â ±â¿ï±â 0ÀÎ Á÷¼±ÀÌ °üÃøµÇ´Â °ÍÀÌ ÀÌ»óÀû.
+#   * X-ì¶• : ì„ í˜• íšŒê·€ë¡œ ì˜ˆì¸¡ëœ Y ê°’, Y-ì¶• : ì”ì°¨.
+#   * ì„ í˜•íšŒê·€ì—ì„œì˜ ê°€ì • :  ì˜¤ì°¨ì˜ í‰ê·  0, ë¶„ì‚°ì´ ì¼ì •í•œ ì •ê·œ ë¶„í¬
+#     => ì˜ˆì¸¡ëœ Y ê°’ê³¼ ë¬´ê´€í•˜ê²Œ ì”ì°¨ì˜ í‰ê· ì€ 0, ë¶„ì‚°ì€ ì¼ì •í•´
+#     => ì´ ê·¸ë˜í”„ì—ì„œëŠ” ê¸°ìš¸ê¸° 0ì¸ ì§ì„ ì´ ê´€ì¸¡ë˜ëŠ” ê²ƒì´ ì´ìƒì .
 
 plot(MaxAge, which= c(2), las= 2) 
 #2 Normal Q-Q 
-#   * ÀÜÂ÷°¡ Á¤±ÔºĞÆ÷¸¦ µû¸£´ÂÁö È®ÀÎÇÏ±â À§ÇÑ QQ-Plot
+#   * ì”ì°¨ê°€ ì •ê·œë¶„í¬ë¥¼ ë”°ë¥´ëŠ”ì§€ í™•ì¸í•˜ê¸° ìœ„í•œ QQ-Plot
 
 plot(MaxAge, which= c(3), las= 3) 
 #3 Scale-Location
-#    * X-Ãà : ¼±ÇüÈ¸±Í·Î ¿¹ÃøµÈ Y °ª, Y-Ãà : Ç¥ÁØÈ­ÀÜÂ÷(Standardized Residual)
-#      * ÀÌ °æ¿ìµµ ±â¿ï±â°¡ 0ÀÎ Á÷¼±ÀÌ ÀÌ»óÀûÀÌ´Ù. 
-#      * Æ¯Á¤À§Ä¡¿¡¼­ 0¿¡¼­ ¸Ö¸® ¶³¾îÁø °ªÀÌ °üÂû  
-#         => Ç¥ÁØÈ­ ÀÜÂ÷°¡ Å©´Ù
-#         => i.e. È¸±ÍÁ÷¼±ÀÌ ÇØ´ç Y¸¦ Àß ÀûÇÕÇÏÁö ¸øÇÑ´Ù´Â ÀÇ¹Ì
-#         => ÀÌ·± Á¡µéÀº ÀÌ»óÄ¡ outlierÀÏ °¡´É¼ºÀÌ ³ô´Ù
+#    * X-ì¶• : ì„ í˜•íšŒê·€ë¡œ ì˜ˆì¸¡ëœ Y ê°’, Y-ì¶• : í‘œì¤€í™”ì”ì°¨(Standardized Residual)
+#      * ì´ ê²½ìš°ë„ ê¸°ìš¸ê¸°ê°€ 0ì¸ ì§ì„ ì´ ì´ìƒì ì´ë‹¤. 
+#      * íŠ¹ì •ìœ„ì¹˜ì—ì„œ 0ì—ì„œ ë©€ë¦¬ ë–¨ì–´ì§„ ê°’ì´ ê´€ì°°  
+#         => í‘œì¤€í™” ì”ì°¨ê°€ í¬ë‹¤
+#         => i.e. íšŒê·€ì§ì„ ì´ í•´ë‹¹ Yë¥¼ ì˜ ì í•©í•˜ì§€ ëª»í•œë‹¤ëŠ” ì˜ë¯¸
+#         => ì´ëŸ° ì ë“¤ì€ ì´ìƒì¹˜ outlierì¼ ê°€ëŠ¥ì„±ì´ ë†’ë‹¤
 
 plot(MaxAge, which= c(4), las= 1) 
-#4 Cook's distance(È¸±ÍÁ÷¼±ÀÇ ¸ğ¾ç(±â¿ï±â³ª ÀıÆí µî)¿¡ Å°Ä¡´Â ¿µÇâ·Â)
-#  °üÃø°ªÀÇ ¼ø¼­º° ÄîÀÇ °Å¸®
-#    * ÄîÀÇ °Å¸® : È¸±Í Á÷¼±ÀÇ ¸ğ¾ç(±â¿ï±â/ÀıÆíµî)¿¡ Å©°Ô ¿µÇâÀ» ³¢Ä¡´Â Á¡µéÀ» Ã£´Â ¹æ¹ı
+#4 Cook's distance(íšŒê·€ì§ì„ ì˜ ëª¨ì–‘(ê¸°ìš¸ê¸°ë‚˜ ì ˆí¸ ë“±)ì— í‚¤ì¹˜ëŠ” ì˜í–¥ë ¥)
+#  ê´€ì¸¡ê°’ì˜ ìˆœì„œë³„ ì¿¡ì˜ ê±°ë¦¬
+#    * ì¿¡ì˜ ê±°ë¦¬ : íšŒê·€ ì§ì„ ì˜ ëª¨ì–‘(ê¸°ìš¸ê¸°/ì ˆí¸ë“±)ì— í¬ê²Œ ì˜í–¥ì„ ë¼ì¹˜ëŠ” ì ë“¤ì„ ì°¾ëŠ” ë°©ë²•
 
 plot(MaxAge, which= c(5), las= 1) 
 #5 Residuals vs Leverage
-#  * X-Ãà :·¹¹ö¸®ÁöLeverage, Y-Ãà: Ç¥ÁØÈ­ ÀÜÂ÷
-#  * ¿ìÃø »ó´Ü/ÇÏ´Ü¿¡ ¼±À¸·Î ÄîÀÇ °Å¸®(Cook¡¯s Distance)°¡ Ç¥½Ã
-#    * ÄîÀÇ °Å¸® : ·¹¹ö¸®Áö¿Í ÀÜÂ÷¿¡ ºñ·Ê 
-#                  i.e. µÎ °ªÀÌ Å©´Ù¸é ¿ìÃø»ó´Ü°ú ¿ìÃøÇÏ´Ü¿¡ À§Ä¡
-#    * ·¹¹ö¸®Áö: ¼³¸íº¯¼ö°¡ ¾ó¸¶³ª ±Ø´Ü¿¡ Ä¡¿ìÃÄ ÀÖ´ÂÁö¸¦ ÀÇ¹Ì
-#                ex) Æ¯Á¤ µ¥ÀÌÅÍ¸¸ À¯µ¶ ´Ù¸£´Ù¸é ÇØ´ç µ¥ÀÌÅÍÀÇ ·¹¹ö¸®Áö´Â Å« °ª.
-#                   => ÀÌ·± µ¥ÀÌÅÍ´Â ÀÔ·ÂÀÌ Àß¸øµÇ¾ú°Å³ª, 
-#                   => ÇØ´ç ¹üÀ§ÀÇ ¼³¸íº¯¼ö°ªÀ» °¡Áö´Â ÀÚ·á¸¦ º¸ÃæÇØ¾ß ÇÏ´Â ÀÛ¾÷ µî ÇÊ¿ä
+#  * X-ì¶• :ë ˆë²„ë¦¬ì§€Leverage, Y-ì¶•: í‘œì¤€í™” ì”ì°¨
+#  * ìš°ì¸¡ ìƒë‹¨/í•˜ë‹¨ì— ì„ ìœ¼ë¡œ ì¿¡ì˜ ê±°ë¦¬(Cookâ€™s Distance)ê°€ í‘œì‹œ
+#    * ì¿¡ì˜ ê±°ë¦¬ : ë ˆë²„ë¦¬ì§€ì™€ ì”ì°¨ì— ë¹„ë¡€ 
+#                  i.e. ë‘ ê°’ì´ í¬ë‹¤ë©´ ìš°ì¸¡ìƒë‹¨ê³¼ ìš°ì¸¡í•˜ë‹¨ì— ìœ„ì¹˜
+#    * ë ˆë²„ë¦¬ì§€: ì„¤ëª…ë³€ìˆ˜ê°€ ì–¼ë§ˆë‚˜ ê·¹ë‹¨ì— ì¹˜ìš°ì³ ìˆëŠ”ì§€ë¥¼ ì˜ë¯¸
+#                ex) íŠ¹ì • ë°ì´í„°ë§Œ ìœ ë… ë‹¤ë¥´ë‹¤ë©´ í•´ë‹¹ ë°ì´í„°ì˜ ë ˆë²„ë¦¬ì§€ëŠ” í° ê°’.
+#                   => ì´ëŸ° ë°ì´í„°ëŠ” ì…ë ¥ì´ ì˜ëª»ë˜ì—ˆê±°ë‚˜, 
+#                   => í•´ë‹¹ ë²”ìœ„ì˜ ì„¤ëª…ë³€ìˆ˜ê°’ì„ ê°€ì§€ëŠ” ìë£Œë¥¼ ë³´ì¶©í•´ì•¼ í•˜ëŠ” ì‘ì—… ë“± í•„ìš”
 
 plot(MaxAge, which= c(6), las= 1) 
 #6 Cook's dist vs Leverage W/ h_ii/(1-h_ii)
@@ -1031,23 +1031,23 @@ detach(Data)
 
 
 
-##10Àå. ºĞ»êºĞ¼®
-#10.2 ÀÏ¿øºĞ·ù ºĞ»êºĞ¼®
+##10ì¥. ë¶„ì‚°ë¶„ì„
+#10.2 ì¼ì›ë¶„ë¥˜ ë¶„ì‚°ë¶„ì„
 
-#[¿¹Á¦ 10.1]
-Data <- read.csv(file='10Àå_¿¹Á¦10.1.csv', header = TRUE)
+#[ì˜ˆì œ 10.1]
+Data <- read.csv(file='10ì¥_ì˜ˆì œ10.1.csv', header = TRUE)
 attach(Data)
 str(Data)
 
 boxplot(Score ~ Type, horizontal= TRUE)
 
-## µîºĞ»ê °¡Á¤ ¾øÀÌ
+## ë“±ë¶„ì‚° ê°€ì • ì—†ì´
 oneway.test(Score ~ Type)
 
-## µîºĞ»ç °¡Á¤ÇÏ¿¡¼­
+## ë“±ë¶„ì‚¬ ê°€ì •í•˜ì—ì„œ
 oneway.test(Score ~ Type, var.equal= TRUE)
 
-## µîºĞ»ê °¡Á¤°ú °°Àº °á°ú
+## ë“±ë¶„ì‚° ê°€ì •ê³¼ ê°™ì€ ê²°ê³¼
 anova(lm(Score ~ Type))
 
 AovOut= aov(Score ~ Type, data= Data)
@@ -1056,20 +1056,20 @@ summary(AovOut)
 detach(Data)
 
 
-#[¿¹Á¦ 10.2]
-Data <- read.csv(file='10Àå_¿¹Á¦10.2.csv', header = TRUE)
+#[ì˜ˆì œ 10.2]
+Data <- read.csv(file='10ì¥_ì˜ˆì œ10.2.csv', header = TRUE)
 attach(Data)
 str(Data)
 
 boxplot(Conentration ~ Treatment, horizontal= TRUE)
 
-## µîºĞ»ê °¡Á¤ ¾øÀÌ
+## ë“±ë¶„ì‚° ê°€ì • ì—†ì´
 oneway.test(Conentration ~ Treatment)
 
-## µîºĞ»ç °¡Á¤ÇÏ¿¡¼­
+## ë“±ë¶„ì‚¬ ê°€ì •í•˜ì—ì„œ
 oneway.test(Conentration ~ Treatment, var.equal= TRUE)
 
-## µîºĞ»ê °¡Á¤°ú °°Àº °á°ú
+## ë“±ë¶„ì‚° ê°€ì •ê³¼ ê°™ì€ ê²°ê³¼
 anova(lm(Conentration ~ Treatment))
 
 AovOut= aov(Conentration ~ Treatment, data= Data)
@@ -1079,10 +1079,10 @@ detach(Data)
 
 
 
-#10.3. ÀÌ¿øºĞ·ù ºĞ»êºĞ¼®
-#10.3.1. ¹İº¹ÃøÁ¤ÀÌ ¾ø´Â °æ¿ì
+#10.3. ì´ì›ë¶„ë¥˜ ë¶„ì‚°ë¶„ì„
+#10.3.1. ë°˜ë³µì¸¡ì •ì´ ì—†ëŠ” ê²½ìš°
 
-#[¿¹Á¦ 10.3]
+#[ì˜ˆì œ 10.3]
 Product= c(42.8, 38.6, 50.2, 48.2, 52.3, 43.5, 
            58.7, 50.8, 48.2, 40.3, 53.5, 51.2 )
 Region= factor(rep(rep(1:4, c(1,1,1,1)), 3))
@@ -1092,7 +1092,7 @@ aov(Product ~ Region + Fertile)
 summary(aov(Product ~ Region + Fertile))
 
 
-#[¿¹Á¦ 10.4]
+#[ì˜ˆì œ 10.4]
 Time= c(8.4, 12.8, 9.6, 9.8, 8.4, 8.6, 8.9, 7.9,
            9.4, 15.2, 9.1, 8.8, 8.2, 9.9, 9.0, 8.1,
            9.8, 12.9, 11.2, 9.9, 8.5, 9.8, 9.2, 8.2, 
@@ -1104,9 +1104,9 @@ aov(Time ~ Experimenter + Treatment)
 summary(aov(Time ~ Experimenter + Treatment))
 
 
-#10.3.1. ¹İº¹ÃøÁ¤ÀÌ ¾ø´Â °æ¿ì
+#10.3.1. ë°˜ë³µì¸¡ì •ì´ ì—†ëŠ” ê²½ìš°
 
-#[¿¹Á¦ 10.5]
+#[ì˜ˆì œ 10.5]
 Sell= c( 23, 20, 21, 22, 19, 20, 19, 18, 21, 
          22, 20, 19, 20, 21, 22, 20, 19, 22,
          18, 18, 16, 21, 23, 20, 20, 22, 24)
@@ -1118,48 +1118,48 @@ summary(aov(Sell ~ Size * Design))
 
 
 
-##11Àå. ¹üÁÖÇü ÀÚ·á ºĞ¼®
-#11.2 ´ÙÇ× ½ÇÇè
+##11ì¥. ë²”ì£¼í˜• ìë£Œ ë¶„ì„
+#11.2 ë‹¤í•­ ì‹¤í—˜
 
-#[¿¹Á¦ 11.2]
+#[ì˜ˆì œ 11.2]
 X <- c(A = 95, B = 62, C = 83)
 X
-Xsq <- chisq.test(X)   # ¶Ç´Â    Xsq <- chisq.test(as.table(X))
+Xsq <- chisq.test(X)   # ë˜ëŠ”    Xsq <- chisq.test(as.table(X))
 Xsq
 names(Xsq)
-Xsq$observed            # °üÂû µµ¼ö
-Xsq$expected            # ±Í¹«°¡¼³ÇÏ¿¡¼­ÀÇ ±â´ë µµ¼ö
-Xsq$residuals           # Pearson's ÀÜÂ÷
+Xsq$observed            # ê´€ì°° ë„ìˆ˜
+Xsq$expected            # ê·€ë¬´ê°€ì„¤í•˜ì—ì„œì˜ ê¸°ëŒ€ ë„ìˆ˜
+Xsq$residuals           # Pearson's ì”ì°¨
 Xsq$statistic
-sum(Xsq$residuals^2)    # °ËÁ¤ Åë°è·® °ª
-Xsq$stdres              # Ç¥ÁØÈ­ ÀÜÂ÷
+sum(Xsq$residuals^2)    # ê²€ì • í†µê³„ëŸ‰ ê°’
+Xsq$stdres              # í‘œì¤€í™” ì”ì°¨
 
 
-#[¿¹Á¦ 11.3]
+#[ì˜ˆì œ 11.3]
 X <- c(R= 64, W= 14, G=38, B=49, BR=6, Y=29)
 Prob <- c(30, 10, 15, 25, 5, 15)
 chisq.test(X, p= Prob, rescale.p= TRUE)
-#¶Ç´Â  chisq.test(as.table(X), p= Prob, rescale.p= TRUE)
+#ë˜ëŠ”  chisq.test(as.table(X), p= Prob, rescale.p= TRUE)
 
 
-#[¿¹Á¦ 11.4]
+#[ì˜ˆì œ 11.4]
 X <- c(22, 21, 22, 27, 22, 36)
 Prob <- c(1, 1, 1, 1, 1, 1)
 chisq.test(X, p= Prob, rescale.p= TRUE)
-#¶Ç´Â  chisq.test(as.table(X), p= Prob, rescale.p= TRUE)
+#ë˜ëŠ”  chisq.test(as.table(X), p= Prob, rescale.p= TRUE)
 
 
-#[¿¹Á¦ 11.5]
+#[ì˜ˆì œ 11.5]
 X <- c(100, 110, 80, 55, 14)
 Prob <- c(29, 21, 17, 17, 16)
 chisq.test(X, p= Prob, rescale.p= TRUE)
-#¶Ç´Â  chisq.test(as.table(X), p= Prob, rescale.p= TRUE)
+#ë˜ëŠ”  chisq.test(as.table(X), p= Prob, rescale.p= TRUE)
 
 
-#[¿¹Á¦ 11.6]
+#[ì˜ˆì œ 11.6]
 Job = matrix( c(8, 18, 11, 10, 16, 12), nrow=2,
-              dimnames = list ( "½ÃÇà" = c("Male", "Female"),     
-                                "°á°ú" = c("Unemploy", "Employ", "Cond¤§mploy")))
+              dimnames = list ( "ì‹œí–‰" = c("Male", "Female"),     
+                                "ê²°ê³¼" = c("Unemploy", "Employ", "Condã„·mploy")))
 Job
 Chisqt.test <- chisq.test(Job)
 Chisqt.test
@@ -1170,10 +1170,10 @@ Chisqt.test$observed
 Chisqt.test$expected
 
 
-#[¿¹Á¦ 11.7]
+#[ì˜ˆì œ 11.7]
 Obs = matrix( c(12813, 65963, 647, 4000, 359, 2642, 42, 303), nrow= 2,
-              dimnames = list ( "¾ÈÀüº§Æ®" = c("Âø¿ë", "¹ÌÂø¿ë"),
-                                "ºÎ»óÁ¤µµ" = c("ºÎ»ó¾øÀ½", "°æ»ó", "Áß°æ»ó", "Áß»ó"))) 
+              dimnames = list ( "ì•ˆì „ë²¨íŠ¸" = c("ì°©ìš©", "ë¯¸ì°©ìš©"),
+                                "ë¶€ìƒì •ë„" = c("ë¶€ìƒì—†ìŒ", "ê²½ìƒ", "ì¤‘ê²½ìƒ", "ì¤‘ìƒ"))) 
 Obs
 Chisqt.test <- chisq.test(Obs)
 Chisqt.test
@@ -1184,9 +1184,9 @@ Chisqt.test$observed
 Chisqt.test$expected
 
 
-#[¿¹Á¦ 11.8]
+#[ì˜ˆì œ 11.8]
 Obs = matrix( c(65, 59, 48, 43, 53, 76, 42, 49), nrow= 4,
-              dimnames = list ( "Region" = c("¼­¿ï", "ºÎ»ê", "±¤ÁÖ", "´ëÀü"),
+              dimnames = list ( "Region" = c("ì„œìš¸", "ë¶€ì‚°", "ê´‘ì£¼", "ëŒ€ì „"),
                                 "Can" = c("CanA", "CanB"))) 
 Obs
 Chisqt.test <- chisq.test(Obs)
@@ -1198,10 +1198,10 @@ Chisqt.test$observed
 Chisqt.test$expected
 
 
-#[¿¹Á¦ 11.9]
+#[ì˜ˆì œ 11.9]
 Dices = matrix( c(38, 12, 26, 4, 26, 17, 34, 17, 31, 18, 45, 32), nrow=2,
-                dimnames = list ( "½ÃÇà" = c("½ÃÇà 1", "½ÃÇà 2"),     
-                                  "°á°ú" = c("1", "2", "3", "4", "5", "6")))
+                dimnames = list ( "ì‹œí–‰" = c("ì‹œí–‰ 1", "ì‹œí–‰ 2"),     
+                                  "ê²°ê³¼" = c("1", "2", "3", "4", "5", "6")))
 Dices
 Chisqt.test <- chisq.test(Dices)
 Chisqt.test
@@ -1212,9 +1212,9 @@ Chisqt.test$observed
 Chisqt.test$expected
 
 
-#[¿¹Á¦ 11.10]
+#[ì˜ˆì œ 11.10]
 Obs = matrix( c(120, 10, 10, 30, 75, 30, 50, 15, 60), nrow= 3,
-              dimnames = list ( "Age" = c("30¼¼ ÀÌÇÏ", "30~44", "45¼¼ ÀÌ»ó"),
+              dimnames = list ( "Age" = c("30ì„¸ ì´í•˜", "30~44", "45ì„¸ ì´ìƒ"),
                                 "TvProgram" = c("Ch_A", "Ch_B", "Ch_C"))) 
 Obs
 Chisqt.test <- chisq.test(Obs)
@@ -1228,10 +1228,10 @@ Chisqt.test$expected
 
 
 
-##12Àå. ºñ¸ğ¼öÅë°èÇĞ
-#12.2 ºÎÈ£ °ËÁ¤
+##12ì¥. ë¹„ëª¨ìˆ˜í†µê³„í•™
+#12.2 ë¶€í˜¸ ê²€ì •
 
-#[¿¹Á¦ 12.1]
+#[ì˜ˆì œ 12.1]
 PreIQ= c(96, 110, 98, 113, 88, 92, 106, 119, 100, 97)
 PostIQ= c(99, 112, 107, 110, 88, 101, 107, 123, 91, 99)
 Diff= PostIQ - PreIQ
@@ -1247,8 +1247,8 @@ library(BSDA)
 BSDA::SIGN.test(Diff, md = 0, alternative = "greater")
 
 
-#[¿¹Á¦ 12.2]
-Data <- read.csv(file='12Àå_¿¹Á¦12.2.csv', header = TRUE)
+#[ì˜ˆì œ 12.2]
+Data <- read.csv(file='12ì¥_ì˜ˆì œ12.2.csv', header = TRUE)
 attach(Data)
 str(Data)
 
@@ -1265,10 +1265,10 @@ detach(Data)
 
 
 
-#12.3 ÀªÄÛ½¼ÀÇ ºÎÈ£¼øÀ§°ËÁ¤
+#12.3 ìœŒì½•ìŠ¨ì˜ ë¶€í˜¸ìˆœìœ„ê²€ì •
 
-#[¿¹Á¦ 12.3]
-Data <- read.csv(file='12Àå_¿¹Á¦12.3.csv', header = TRUE)
+#[ì˜ˆì œ 12.3]
+Data <- read.csv(file='12ì¥_ì˜ˆì œ12.3.csv', header = TRUE)
 attach(Data)
 str(Data)
 
@@ -1278,9 +1278,9 @@ detach(Data)
 
 
 
-#12.4 ÀªÄÛ½¼ÀÇ ¼øÀ§ÇÕ °ËÁ¤
+#12.4 ìœŒì½•ìŠ¨ì˜ ìˆœìœ„í•© ê²€ì •
 
-#[¿¹Á¦ 12.4]
+#[ì˜ˆì œ 12.4]
 A <- c(3, 5)
 B <- c(1, 2, 4)
 SumRankX= sum(rank(c(A,B))[1:2]) 
@@ -1292,7 +1292,7 @@ wilcox.test(A, B, exact= FALSE, correct= TRUE, alternative= "greater")
 
 
 
-#[¿¹Á¦ 12.5]
+#[ì˜ˆì œ 12.5]
 A <- c(4.7, 6.4, 4.1, 3.7, 3.9)
 B <- c(7.6, 11.1, 6.8, 9.8, 4.9, 6.1, 15.1)
 SumRankX= sum(rank(c(A,B))[1:5]) 
@@ -1304,8 +1304,8 @@ wilcox.test(A, B, exact= FALSE, correct= TRUE, alternative= "less")
 
 
 
-#[¿¹Á¦ 12.6]
-Data <- read.csv(file='12Àå_¿¹Á¦12.6.csv', header = TRUE)
+#[ì˜ˆì œ 12.6]
+Data <- read.csv(file='12ì¥_ì˜ˆì œ12.6.csv', header = TRUE)
 attach(Data)
 str(Data)
 
@@ -1320,23 +1320,22 @@ detach(Data)
 
 
 
-#12.5 ·± °ËÁ¤
+#12.5 ëŸ° ê²€ì •
 
-#[¿¹Á¦ 12.7]
+#[ì˜ˆì œ 12.7]
 install.packages("DescTools")
 library(DescTools)
 Order = c("m", "m", "m", "w", "m", "m", "m", "m", "w", "w", "w", "m")
 RunsTest(Order)
 
 
-#[¿¹Á¦ 12.8]
+#[ì˜ˆì œ 12.8]
 #install.packages("DescTools")
 library(DescTools)
-Data <- read.csv(file='12Àå_¿¹Á¦12.8.csv', header = TRUE)
+Data <- read.csv(file='12ì¥_ì˜ˆì œ12.8.csv', header = TRUE)
 attach(Data)
 str(Data)
 
 RunsTest(DVD)
 
 detach(Data)
-
